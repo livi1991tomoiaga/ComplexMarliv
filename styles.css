@@ -924,4 +924,16 @@ h1, h2, h3, h4 {
     .reviews-grid {
         grid-template-columns: 1fr;
     }
+
+    .rules-show-more-container {
+        display: block !important;
+    }
+
+    .rules-grid .rule-card:nth-child(n+4) {
+        display: none;
+    }
+
+    .rules-grid.show-all .rule-card:nth-child(n+4) {
+        display: block;
+    }
 }

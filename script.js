@@ -83,4 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.1 });
         heroObserver.observe(heroSection);
     }
+
+    // Show More Rules Logic
+    const showMoreRulesBtn = document.getElementById('show-more-rules');
+    const rulesGrid = document.querySelector('.rules-grid');
+    if (showMoreRulesBtn && rulesGrid) {
+        showMoreRulesBtn.addEventListener('click', () => {
+            rulesGrid.classList.toggle('show-all');
+            if (rulesGrid.classList.contains('show-all')) {
+                showMoreRulesBtn.textContent = 'Vezi mai puțin';
+            } else {
+                showMoreRulesBtn.textContent = 'Vezi mai mult';
+            }
+        });
+    }
 });

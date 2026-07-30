@@ -3,14 +3,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuIcon = document.getElementById('mobile-menu-icon');
     const navLinks = document.querySelector('.nav-links');
 
-    // Sticky Navbar on Scroll
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+    // Chameleonic Navbar on Scroll
+    const sections = document.querySelectorAll('section, footer');
+    
+    const updateNavbar = () => {
+        let currentSection = null;
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 40 && rect.bottom >= 40) {
+                currentSection = section;
+            }
+        });
+
+        if (currentSection) {
+            const isDarkSection = currentSection.id === 'home' || currentSection.tagName.toLowerCase() === 'footer' || currentSection.classList.contains('booking-cta');
+            
+            if (isDarkSection) {
+                navbar.classList.remove('nav-light');
+                navbar.classList.add('nav-dark');
+            } else {
+                navbar.classList.remove('nav-dark');
+                navbar.classList.add('nav-light');
+            }
+        } else if (window.scrollY === 0) {
+            navbar.classList.remove('nav-light');
+            navbar.classList.add('nav-dark');
         }
-    });
+    };
+
+    window.addEventListener('scroll', updateNavbar);
+    updateNavbar(); // initial check
 
     // Mobile Menu Toggle
     mobileMenuIcon.addEventListener('click', () => {

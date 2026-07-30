@@ -129,7 +129,9 @@ h1, h2, h3, h4 {
     top: 0;
     width: 100%;
     height: var(--navbar-height);
-    background: transparent;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -151,26 +153,30 @@ h1, h2, h3, h4 {
     color: var(--text-white);
 }
 
-.navbar.scrolled {
-    height: 70px;
-    background: #ffffff;
-    border-bottom: 1px solid #d9e1e6;
+.navbar.nav-light {
+    background: rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.navbar.scrolled .logo a {
+.navbar.nav-light .logo a {
     color: var(--text-main);
 }
 
-.navbar.scrolled .nav-links a:not(.btn-primary) {
+.navbar.nav-light .nav-links a:not(.btn-primary) {
     color: var(--text-main);
 }
 
-.navbar.scrolled .mobile-menu-icon {
+.navbar.nav-light .mobile-menu-icon {
     color: var(--text-main);
+}
+
+.navbar.nav-dark {
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid transparent;
 }
 
 .logo a {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     text-decoration: none;
     letter-spacing: -1px;
@@ -178,6 +184,29 @@ h1, h2, h3, h4 {
 
 .logo span {
     font-weight: 400;
+}
+
+.marliv-gold {
+    font-weight: 900;
+    font-size: 1.25em;
+    -webkit-text-stroke: 0.5px var(--accent-gold); /* Smoother outline */
+    position: relative;
+    display: inline-block;
+    
+    /* Polished metallic effect */
+    background: linear-gradient(
+        135deg,
+        #fcf3cd 0%, 
+        var(--accent-gold) 35%, 
+        #796748 50%, 
+        var(--accent-gold) 65%, 
+        #fce8b3 100%
+    );
+    
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .nav-links {
@@ -189,7 +218,7 @@ h1, h2, h3, h4 {
 .nav-links a {
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: var(--transition);
@@ -765,6 +794,10 @@ h1, h2, h3, h4 {
     .navbar .logo a, .navbar .mobile-menu-icon {
         color: var(--text-main);
     }
+    
+    .logo a {
+        font-size: 1.5rem;
+    }
 
     .nav-links {
         display: none;
@@ -780,6 +813,10 @@ h1, h2, h3, h4 {
     
     .nav-links.active {
         display: flex;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
     }
 
     .nav-links a:not(.btn-primary) {
